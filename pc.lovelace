@@ -4,7 +4,7 @@ path: pc
 icon: hass:car-cruise-control
 cards:
   - type: markdown
-    content: "**Power Control v.3.70**"
+    content: "**Power Control v.4.00**"
   - type: vertical-stack
     cards:
       - type: history-graph
@@ -336,8 +336,15 @@ cards:
         card:
           type: markdown
           content: >
-            Questa è la configurazione attualmente utilizzata, modificabile
-            tramite i menu a discesa seguenti.
+            **Novità versione 4.00:**
+
+            - **Gestione Avanzata Climatizzatori**: La nuova azione "Auto" permette di ridurre il carico dei climatizzatori modificando la temperatura, invece di spegnerli.
+            - **Filtri Entità Configurabili**: Ora puoi personalizzare i prefissi per filtrare le entità mostrate negli elenchi, rendendo la configurazione più pulita e adatta a setup internazionali (vedi "Attiva Filtro Entità").
+            - **Logica Centralizzata**: Tutta la logica di gestione è stata spostata in uno script Python per maggiore efficienza e manutenibilità.
+
+            ---
+
+            Questa è la configurazione attualmente utilizzata, modificabile tramite i menu a discesa seguenti.
 
 
             **Sensore rilevamento potenza**:
