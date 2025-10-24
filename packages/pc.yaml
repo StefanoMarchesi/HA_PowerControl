@@ -790,11 +790,7 @@ timer:
   tempo_riattivazione:
     duration: "00:00:00"
 
-#################################################################
-####################### AUTOMAZIONI #############################
-#################################################################
 automation:
-
 # All'avvio di HA, aggiorna gli input_slider con la lista delle entità per i campi di configurazione.
 # All'avvio di HA attende che l'automazione "Popola entità" termini, poi carica la configurazione di interruttori
 # e sensori di potenza.
@@ -1350,6 +1346,7 @@ automation:
                 target: { entity_id: input_number.temp_pre_gestione_20 }
                 data: { value: "{{ trigger.event.data.new_state.attributes.temperature }}" }
 
+script:
 #################################################################
 ###################### CONFIGURAZIONE ###########################
 #################################################################
@@ -1369,7 +1366,6 @@ automation:
         level: debug
         logger: homeassistant.components.pc
         message: "Script Configurazione - Popola entità - Script python terminato"
-
     - service: system_log.write
       data_template:
         level: debug
