@@ -1221,6 +1221,124 @@ automation:
           logger: homeassistant.components.pc
           message: "Automazione Reset sospesa - Fine"
 
+  - id: 'powercontrol_sync_manual_climate_temperature'
+    alias: PowerControl - Sync Manual Climate Temperature
+    mode: single
+    trigger:
+      - platform: event
+        event_type: state_changed
+    condition: >-
+      {{
+        trigger.event.data.entity_id.startswith('climate.') and
+        trigger.event.data.new_state is not none and
+        trigger.event.data.old_state is not none and
+        trigger.event.data.new_state.attributes.temperature is not none and
+        trigger.event.data.old_state.attributes.temperature is not none and
+        trigger.event.data.new_state.attributes.temperature != trigger.event.data.old_state.attributes.temperature and
+        (trigger.event.data.context is none or trigger.event.data.context.id != 'HA_POWER_CONTROL_CONTEXT')
+      }}
+    action:
+      - choose:
+          - conditions: "{{ states('input_text.carico_1_switch') == trigger.event.data.entity_id and states('input_select.azione_carico_1') == 'Auto' }}"
+            sequence:
+              - service: input_number.set_value
+                target: { entity_id: input_number.temp_pre_gestione_1 }
+                data: { value: "{{ trigger.event.data.new_state.attributes.temperature }}" }
+          - conditions: "{{ states('input_text.carico_2_switch') == trigger.event.data.entity_id and states('input_select.azione_carico_2') == 'Auto' }}"
+            sequence:
+              - service: input_number.set_value
+                target: { entity_id: input_number.temp_pre_gestione_2 }
+                data: { value: "{{ trigger.event.data.new_state.attributes.temperature }}" }
+          - conditions: "{{ states('input_text.carico_3_switch') == trigger.event.data.entity_id and states('input_select.azione_carico_3') == 'Auto' }}"
+            sequence:
+              - service: input_number.set_value
+                target: { entity_id: input_number.temp_pre_gestione_3 }
+                data: { value: "{{ trigger.event.data.new_state.attributes.temperature }}" }
+          - conditions: "{{ states('input_text.carico_4_switch') == trigger.event.data.entity_id and states('input_select.azione_carico_4') == 'Auto' }}"
+            sequence:
+              - service: input_number.set_value
+                target: { entity_id: input_number.temp_pre_gestione_4 }
+                data: { value: "{{ trigger.event.data.new_state.attributes.temperature }}" }
+          - conditions: "{{ states('input_text.carico_5_switch') == trigger.event.data.entity_id and states('input_select.azione_carico_5') == 'Auto' }}"
+            sequence:
+              - service: input_number.set_value
+                target: { entity_id: input_number.temp_pre_gestione_5 }
+                data: { value: "{{ trigger.event.data.new_state.attributes.temperature }}" }
+          - conditions: "{{ states('input_text.carico_6_switch') == trigger.event.data.entity_id and states('input_select.azione_carico_6') == 'Auto' }}"
+            sequence:
+              - service: input_number.set_value
+                target: { entity_id: input_number.temp_pre_gestione_6 }
+                data: { value: "{{ trigger.event.data.new_state.attributes.temperature }}" }
+          - conditions: "{{ states('input_text.carico_7_switch') == trigger.event.data.entity_id and states('input_select.azione_carico_7') == 'Auto' }}"
+            sequence:
+              - service: input_number.set_value
+                target: { entity_id: input_number.temp_pre_gestione_7 }
+                data: { value: "{{ trigger.event.data.new_state.attributes.temperature }}" }
+          - conditions: "{{ states('input_text.carico_8_switch') == trigger.event.data.entity_id and states('input_select.azione_carico_8') == 'Auto' }}"
+            sequence:
+              - service: input_number.set_value
+                target: { entity_id: input_number.temp_pre_gestione_8 }
+                data: { value: "{{ trigger.event.data.new_state.attributes.temperature }}" }
+          - conditions: "{{ states('input_text.carico_9_switch') == trigger.event.data.entity_id and states('input_select.azione_carico_9') == 'Auto' }}"
+            sequence:
+              - service: input_number.set_value
+                target: { entity_id: input_number.temp_pre_gestione_9 }
+                data: { value: "{{ trigger.event.data.new_state.attributes.temperature }}" }
+          - conditions: "{{ states('input_text.carico_10_switch') == trigger.event.data.entity_id and states('input_select.azione_carico_10') == 'Auto' }}"
+            sequence:
+              - service: input_number.set_value
+                target: { entity_id: input_number.temp_pre_gestione_10 }
+                data: { value: "{{ trigger.event.data.new_state.attributes.temperature }}" }
+          - conditions: "{{ states('input_text.carico_11_switch') == trigger.event.data.entity_id and states('input_select.azione_carico_11') == 'Auto' }}"
+            sequence:
+              - service: input_number.set_value
+                target: { entity_id: input_number.temp_pre_gestione_11 }
+                data: { value: "{{ trigger.event.data.new_state.attributes.temperature }}" }
+          - conditions: "{{ states('input_text.carico_12_switch') == trigger.event.data.entity_id and states('input_select.azione_carico_12') == 'Auto' }}"
+            sequence:
+              - service: input_number.set_value
+                target: { entity_id: input_number.temp_pre_gestione_12 }
+                data: { value: "{{ trigger.event.data.new_state.attributes.temperature }}" }
+          - conditions: "{{ states('input_text.carico_13_switch') == trigger.event.data.entity_id and states('input_select.azione_carico_13') == 'Auto' }}"
+            sequence:
+              - service: input_number.set_value
+                target: { entity_id: input_number.temp_pre_gestione_13 }
+                data: { value: "{{ trigger.event.data.new_state.attributes.temperature }}" }
+          - conditions: "{{ states('input_text.carico_14_switch') == trigger.event.data.entity_id and states('input_select.azione_carico_14') == 'Auto' }}"
+            sequence:
+              - service: input_number.set_value
+                target: { entity_id: input_number.temp_pre_gestione_14 }
+                data: { value: "{{ trigger.event.data.new_state.attributes.temperature }}" }
+          - conditions: "{{ states('input_text.carico_15_switch') == trigger.event.data.entity_id and states('input_select.azione_carico_15') == 'Auto' }}"
+            sequence:
+              - service: input_number.set_value
+                target: { entity_id: input_number.temp_pre_gestione_15 }
+                data: { value: "{{ trigger.event.data.new_state.attributes.temperature }}" }
+          - conditions: "{{ states('input_text.carico_16_switch') == trigger.event.data.entity_id and states('input_select.azione_carico_16') == 'Auto' }}"
+            sequence:
+              - service: input_number.set_value
+                target: { entity_id: input_number.temp_pre_gestione_16 }
+                data: { value: "{{ trigger.event.data.new_state.attributes.temperature }}" }
+          - conditions: "{{ states('input_text.carico_17_switch') == trigger.event.data.entity_id and states('input_select.azione_carico_17') == 'Auto' }}"
+            sequence:
+              - service: input_number.set_value
+                target: { entity_id: input_number.temp_pre_gestione_17 }
+                data: { value: "{{ trigger.event.data.new_state.attributes.temperature }}" }
+          - conditions: "{{ states('input_text.carico_18_switch') == trigger.event.data.entity_id and states('input_select.azione_carico_18') == 'Auto' }}"
+            sequence:
+              - service: input_number.set_value
+                target: { entity_id: input_number.temp_pre_gestione_18 }
+                data: { value: "{{ trigger.event.data.new_state.attributes.temperature }}" }
+          - conditions: "{{ states('input_text.carico_19_switch') == trigger.event.data.entity_id and states('input_select.azione_carico_19') == 'Auto' }}"
+            sequence:
+              - service: input_number.set_value
+                target: { entity_id: input_number.temp_pre_gestione_19 }
+                data: { value: "{{ trigger.event.data.new_state.attributes.temperature }}" }
+          - conditions: "{{ states('input_text.carico_20_switch') == trigger.event.data.entity_id and states('input_select.azione_carico_20') == 'Auto' }}"
+            sequence:
+              - service: input_number.set_value
+                target: { entity_id: input_number.temp_pre_gestione_20 }
+                data: { value: "{{ trigger.event.data.new_state.attributes.temperature }}" }
 
 #################################################################
 ###################### CONFIGURAZIONE ###########################
