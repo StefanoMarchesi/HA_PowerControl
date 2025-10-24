@@ -90,6 +90,14 @@ elif action == "restore":
 
     # Scan in priority order (1 to 20)
     for i in range(1, 21):
+        mantieni_spento_helper = f"input_boolean.mantini_spento_{i}"
+        mantieni_spento_state = get_entity_state(mantieni_spento_helper)
+
+        # --- PRE-CHECK: Skip if "Mantieni Spento" is enabled for this load ---
+        if mantieni_spento_state and mantieni_spento_state.state == 'on':
+            logger.debug(f"PowerControl: Skipping restore for carico_{i} because 'Mantieni Spento' is on.")
+            continue
+
         switch_entity_id_helper = f"input_text.carico_{i}_switch"
         azione_entity_id_helper = f"input_select.azione_carico_{i}"
         temp_entity_id_helper = f"input_number.temp_pre_gestione_{i}"
@@ -107,7 +115,6 @@ elif action == "restore":
         azione = azione_state.state
 
         # --- Check 1: Restore Climate Temperature ---
-        # If the device is a climate set to Auto and its temp was managed
         if entity_domain == 'climate' and azione == 'Auto':
             temp_saved_state = get_entity_state(temp_entity_id_helper)
             if temp_saved_state and float(temp_saved_state.state) > 0:
@@ -120,11 +127,9 @@ elif action == "restore":
                 action_performed = True
 
         # --- Check 2: Turn On Device ---
-        # If no climate was restored, check if a device was turned off by us
         if not action_performed:
             sospesa_state = get_entity_state(sospesa_entity_id_helper)
             if sospesa_state and float(sospesa_state.state) > 0:
-                # Restore if action is "Spegni", or if it's a switch/light on "Auto"
                 if azione == 'Spegni' or (azione == 'Auto' and entity_domain in ['switch', 'light']):
                     logger.info(f"PowerControl: Restoring device {switch_entity_id} by turning it on.")
 
@@ -133,7 +138,6 @@ elif action == "restore":
 
                     action_performed = True
 
-        # If we performed any action, stop scanning.
         if action_performed:
             logger.info("PowerControl: Restore action performed, ending current cycle.")
             break
