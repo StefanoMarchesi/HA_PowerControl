@@ -189,6 +189,16 @@ input_text:
 
   potenza_carichi:
 
+  pc_switch_filter:
+    name: PowerControl Switch Filter
+    initial: "switch."
+  pc_climate_filter:
+    name: PowerControl Climate Filter
+    initial: "climate."
+  pc_sensor_filter:
+    name: PowerControl Sensor Filter
+    initial: "sensor."
+
 input_boolean:
 # Switch per l'interfaccia grafica 
   attiva_power_control:
@@ -1353,19 +1363,7 @@ automation:
         level: debug
         logger: homeassistant.components.pc
         message: "Script Configurazione - Popola entità - Avvio script python"
-    - choose:
-      - conditions:
-          - condition: state
-            entity_id: input_boolean.selezione_script_python
-            state: 'off'
-        sequence:
-          - service: python_script.update_entities
-      - conditions:
-          - condition: state
-            entity_id: input_boolean.selezione_script_python
-            state: 'on'
-        sequence:
-          - service: python_script.update_entities_new
+    - service: python_script.update_entities
     - service: system_log.write
       data_template:
         level: debug

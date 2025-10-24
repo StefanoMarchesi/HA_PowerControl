@@ -530,9 +530,7 @@ cards:
 
             **Nuova modalità selezione**
 
-            Attivando questa opzione, le entità dei carichi verranno filtrate e
-            saranno visibili solo quelle che iniziano con "sensor.potenza" e
-            "swtich.interruttore".
+            Attivando questa opzione, le entità dei carichi verranno filtrate in base ai prefissi definiti nei campi sottostanti. Questo è utile per mostrare solo entità rilevanti (es. `switch.shelly_`). Lasciare il valore predefinito (es. `switch.`) per mostrare tutte le entità di quel tipo.
           title: Configurazione
         - type: entities
           entities:
@@ -560,7 +558,13 @@ cards:
               name: Minuti tra gli start
               icon: hass:camera-timer
             - entity: input_boolean.selezione_script_python
-              name: Nuova modalità selezione opzioni
+              name: Attiva Filtro Entità
+            - entity: input_text.pc_switch_filter
+              name: Filtro Switch/Light
+            - entity: input_text.pc_climate_filter
+              name: Filtro Climate
+            - entity: input_text.pc_sensor_filter
+              name: Filtro Sensori
           state_color: true
           show_header_toggle: false
   - type: conditional
