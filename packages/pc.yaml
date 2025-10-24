@@ -378,6 +378,126 @@ input_number:
     max: 60
     step: 1
 
+  temp_pre_gestione_1:
+    name: Temperatura Salvata Carico 1
+    min: 16
+    max: 30
+    step: 0.5
+    mode: box
+  temp_pre_gestione_2:
+    name: Temperatura Salvata Carico 2
+    min: 16
+    max: 30
+    step: 0.5
+    mode: box
+  temp_pre_gestione_3:
+    name: Temperatura Salvata Carico 3
+    min: 16
+    max: 30
+    step: 0.5
+    mode: box
+  temp_pre_gestione_4:
+    name: Temperatura Salvata Carico 4
+    min: 16
+    max: 30
+    step: 0.5
+    mode: box
+  temp_pre_gestione_5:
+    name: Temperatura Salvata Carico 5
+    min: 16
+    max: 30
+    step: 0.5
+    mode: box
+  temp_pre_gestione_6:
+    name: Temperatura Salvata Carico 6
+    min: 16
+    max: 30
+    step: 0.5
+    mode: box
+  temp_pre_gestione_7:
+    name: Temperatura Salvata Carico 7
+    min: 16
+    max: 30
+    step: 0.5
+    mode: box
+  temp_pre_gestione_8:
+    name: Temperatura Salvata Carico 8
+    min: 16
+    max: 30
+    step: 0.5
+    mode: box
+  temp_pre_gestione_9:
+    name: Temperatura Salvata Carico 9
+    min: 16
+    max: 30
+    step: 0.5
+    mode: box
+  temp_pre_gestione_10:
+    name: Temperatura Salvata Carico 10
+    min: 16
+    max: 30
+    step: 0.5
+    mode: box
+  temp_pre_gestione_11:
+    name: Temperatura Salvata Carico 11
+    min: 16
+    max: 30
+    step: 0.5
+    mode: box
+  temp_pre_gestione_12:
+    name: Temperatura Salvata Carico 12
+    min: 16
+    max: 30
+    step: 0.5
+    mode: box
+  temp_pre_gestione_13:
+    name: Temperatura Salvata Carico 13
+    min: 16
+    max: 30
+    step: 0.5
+    mode: box
+  temp_pre_gestione_14:
+    name: Temperatura Salvata Carico 14
+    min: 16
+    max: 30
+    step: 0.5
+    mode: box
+  temp_pre_gestione_15:
+    name: Temperatura Salvata Carico 15
+    min: 16
+    max: 30
+    step: 0.5
+    mode: box
+  temp_pre_gestione_16:
+    name: Temperatura Salvata Carico 16
+    min: 16
+    max: 30
+    step: 0.5
+    mode: box
+  temp_pre_gestione_17:
+    name: Temperatura Salvata Carico 17
+    min: 16
+    max: 30
+    step: 0.5
+    mode: box
+  temp_pre_gestione_18:
+    name: Temperatura Salvata Carico 18
+    min: 16
+    max: 30
+    step: 0.5
+    mode: box
+  temp_pre_gestione_19:
+    name: Temperatura Salvata Carico 19
+    min: 16
+    max: 30
+    step: 0.5
+    mode: box
+  temp_pre_gestione_20:
+    name: Temperatura Salvata Carico 20
+    min: 16
+    max: 30
+    step: 0.5
+    mode: box
 
 input_select:
 # Drop-down per la configurazione di PowerControl. L'elenco di interruttori e sensori viene aggiornato all'avvio di HA.
@@ -555,6 +675,106 @@ input_select:
     name: Sensore Carico Priorità 20
     options:
       - Seleziona
+  azione_carico_1:
+    name: Azione Carico 1
+    options:
+      - Auto
+      - Spegni
+  azione_carico_2:
+    name: Azione Carico 2
+    options:
+      - Auto
+      - Spegni
+  azione_carico_3:
+    name: Azione Carico 3
+    options:
+      - Auto
+      - Spegni
+  azione_carico_4:
+    name: Azione Carico 4
+    options:
+      - Auto
+      - Spegni
+  azione_carico_5:
+    name: Azione Carico 5
+    options:
+      - Auto
+      - Spegni
+  azione_carico_6:
+    name: Azione Carico 6
+    options:
+      - Auto
+      - Spegni
+  azione_carico_7:
+    name: Azione Carico 7
+    options:
+      - Auto
+      - Spegni
+  azione_carico_8:
+    name: Azione Carico 8
+    options:
+      - Auto
+      - Spegni
+  azione_carico_9:
+    name: Azione Carico 9
+    options:
+      - Auto
+      - Spegni
+  azione_carico_10:
+    name: Azione Carico 10
+    options:
+      - Auto
+      - Spegni
+  azione_carico_11:
+    name: Azione Carico 11
+    options:
+      - Auto
+      - Spegni
+  azione_carico_12:
+    name: Azione Carico 12
+    options:
+      - Auto
+      - Spegni
+  azione_carico_13:
+    name: Azione Carico 13
+    options:
+      - Auto
+      - Spegni
+  azione_carico_14:
+    name: Azione Carico 14
+    options:
+      - Auto
+      - Spegni
+  azione_carico_15:
+    name: Azione Carico 15
+    options:
+      - Auto
+      - Spegni
+  azione_carico_16:
+    name: Azione Carico 16
+    options:
+      - Auto
+      - Spegni
+  azione_carico_17:
+    name: Azione Carico 17
+    options:
+      - Auto
+      - Spegni
+  azione_carico_18:
+    name: Azione Carico 18
+    options:
+      - Auto
+      - Spegni
+  azione_carico_19:
+    name: Azione Carico 19
+    options:
+      - Auto
+      - Spegni
+  azione_carico_20:
+    name: Azione Carico 20
+    options:
+      - Auto
+      - Spegni
 
 timer:
   tempo_riattivazione:
