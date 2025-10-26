@@ -55,15 +55,29 @@ if action == "reduce":
             if temp_saved_state and float(temp_saved_state.state) > 0:
                 continue
 
-            original_temp = entity_state.attributes.get('temperature')
+            attributes = entity_state.attributes
+            original_temp = attributes.get('temperature')
+            min_temp = attributes.get('min_temp', 16.0) # Default fallback
+            max_temp = attributes.get('max_temp', 30.0) # Default fallback
+
             if original_temp is not None:
                 new_temp = None
-                if entity_state.state == 'cool': new_temp = original_temp + 2.0
-                elif entity_state.state == 'heat': new_temp = original_temp - 2.0
+                if entity_state.state == 'cool':
+                    new_temp = original_temp + 2.0
+                    # Clamp the new temperature to the maximum allowed
+                    new_temp = min(new_temp, max_temp)
+                elif entity_state.state == 'heat':
+                    new_temp = original_temp - 2.0
+                    # Clamp the new temperature to the minimum allowed
+                    new_temp = max(new_temp, min_temp)
 
                 if new_temp is not None:
-                    logger.info(f"PowerControl: Reducing load for {switch_entity_id} by adjusting temp from {original_temp} to {new_temp}.")
+                    logger.info(f"PowerControl: Reducing load for {switch_entity_id}. Adjusting temp from {original_temp} to {new_temp} (Limits: {min_temp}-{max_temp}).")
+
+                    # Save the original temperature to mark it as "managed"
                     hass.services.call('input_number', 'set_value', {'entity_id': temp_entity_id_helper, 'value': original_temp}, context=my_context)
+
+                    # Set the new, clamped temperature
                     hass.services.call('climate', 'set_temperature', {'entity_id': switch_entity_id, 'temperature': new_temp}, context=my_context)
                     action_performed = True
 
